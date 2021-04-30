@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vigour/screens/know_more.dart';
 
 class Participate extends StatelessWidget {
   const Participate({Key key}) : super(key: key);
@@ -129,7 +130,14 @@ class Participate extends StatelessWidget {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (ctx) {
+                                        return KnowMore();
+                                      }),
+                                    );
+                                  },
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(28),

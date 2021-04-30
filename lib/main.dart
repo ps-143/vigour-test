@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vigour/screens/confirm.dart';
+import 'package:vigour/screens/participate.dart';
+import 'package:vigour/screens/participate_form.dart';
+import 'package:vigour/screens/practice.dart';
 import 'package:vigour/screens/slot.dart';
 // import 'package:vigour/screens/participate.dart';
 // import 'package:vigour/screens/practice.dart';
@@ -11,8 +14,61 @@ void main() => runApp(
       ),
     );
 
-class Vigour extends StatelessWidget {
+class Vigour extends StatefulWidget {
   const Vigour({Key key}) : super(key: key);
+
+  @override
+  _VigourState createState() => _VigourState();
+}
+
+class _VigourState extends State<Vigour> {
+  List<Widget> _pages = [];
+  List<Widget> _appBarTitle = [];
+  int _currentPage = 0;
+  @override
+  void initState() {
+    super.initState();
+    _pages.addAll([
+      Participate(),
+      Practice(),
+      Container(),
+    ]);
+    _appBarTitle.addAll([
+      ListTile(
+        title: Text(
+          "Upcoming",
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 22,
+          ),
+        ),
+        subtitle: Text(
+          "Tournaments",
+          style: TextStyle(
+            color: Colors.red,
+            fontSize: 34,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ),
+      Text(
+        "Let's Go",
+        style: TextStyle(
+          color: Colors.red,
+          fontSize: 34,
+          fontWeight: FontWeight.w900,
+        ),
+      ),
+      Text(
+        "Profile",
+        style: TextStyle(
+          color: Colors.red,
+          fontSize: 34,
+          fontWeight: FontWeight.w900,
+        ),
+      ),
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,26 +79,10 @@ class Vigour extends StatelessWidget {
         elevation: 0,
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: ListTile(
-            title: Text(
-              "Upcoming",
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 22,
-              ),
-            ),
-            subtitle: Text(
-              "Tournaments",
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 34,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
-          ),
+          child: _appBarTitle[_currentPage],
         ),
       ),
-      body: Slot(),
+      body: _pages[_currentPage],
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -52,6 +92,7 @@ class Vigour extends StatelessWidget {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           selectedItemColor: Colors.redAccent,
+          currentIndex: _currentPage,
           unselectedItemColor: Colors.grey,
           type: BottomNavigationBarType.fixed,
           backgroundColor: Color.fromRGBO(240, 240, 255, 1),
@@ -66,14 +107,17 @@ class Vigour extends StatelessWidget {
               label: "Practice",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: "Search",
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: "Profile",
             )
           ],
+          onTap: (i) {
+            if (this.mounted) {
+              setState(() {
+                _currentPage = i;
+              });
+            }
+          },
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:vigour/screens/book_slot.dart';
+import 'package:vigour/screens/grounds.dart';
 
 class Practice extends StatelessWidget {
   const Practice({Key key}) : super(key: key);
@@ -20,26 +22,36 @@ class Practice extends StatelessWidget {
                   enableInfiniteScroll: false,
                   onPageChanged: (index, reason) {}),
               itemBuilder: (context, index, x) {
-                return Container(
-                    width: 200,
-                    height: 300,
-                    alignment: Alignment.bottomLeft,
-                    margin: EdgeInsets.only(right: 30),
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-                            )),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Text(
-                      'text $index',
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ));
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (ctx) {
+                        return Grounds();
+                      }),
+                    );
+                  },
+                  child: Container(
+                      width: 200,
+                      height: 300,
+                      alignment: Alignment.bottomLeft,
+                      margin: EdgeInsets.only(right: 30),
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+                              )),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Text(
+                        'text $index',
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                );
               },
             )),
         SizedBox(
@@ -66,41 +78,54 @@ class Practice extends StatelessWidget {
               itemCount: 20,
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 18),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.network(
-                          "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-                          height: 80,
-                        ),
+                return InkWell(
+                  splashColor: Colors.transparent,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (ctx) {
+                          return BookSlot();
+                        },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 40),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Lawn Tennis",
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "Aghaa Club, BHEL",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 18),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.network(
+                            "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+                            height: 80,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 40),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Lawn Tennis",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ),
-                          ],
+                              Text(
+                                "Aghaa Club, BHEL",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

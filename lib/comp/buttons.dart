@@ -7,7 +7,7 @@ class PrimaryButton extends StatelessWidget {
     this.margin,
     this.buttonText,
     this.onPressed,
-    this.height,
+    this.height = 42,
   }) : super(key: key);
 
   final double width;
@@ -29,7 +29,7 @@ class PrimaryButton extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        height: 42,
+        height: this.height,
         onPressed: this.onPressed == null ? () {} : this.onPressed,
         disabledColor: Colors.transparent,
         focusElevation: 0,
@@ -56,12 +56,14 @@ class BorderButton extends StatelessWidget {
     this.margin,
     this.buttonText,
     this.onPressed,
+    this.height = 48,
   }) : super(key: key);
 
   final double width;
   final EdgeInsets margin;
   final String buttonText;
   final void Function() onPressed;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class BorderButton extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        height: 48,
+        height: this.height,
         onPressed: this.onPressed == null ? () {} : this.onPressed,
         disabledColor: Colors.transparent,
         focusElevation: 0,

@@ -54,7 +54,7 @@ class Start extends StatelessWidget {
                     children: [
                       BorderButton(
                         width: MediaQuery.of(context).size.width,
-                        buttonText: "Practice",
+                        buttonText: "Log In",
                         margin: EdgeInsets.symmetric(
                             horizontal:
                                 MediaQuery.of(context).size.width * 0.2),
@@ -64,7 +64,7 @@ class Start extends StatelessWidget {
                       ),
                       PrimaryButton(
                         width: MediaQuery.of(context).size.width,
-                        buttonText: "Participate",
+                        buttonText: "Sign Up",
                         margin: EdgeInsets.symmetric(
                             horizontal:
                                 MediaQuery.of(context).size.width * 0.2),
