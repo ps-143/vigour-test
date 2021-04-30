@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vigour/screens/participate.dart';
-import 'package:vigour/screens/practice.dart';
+import 'package:vigour/screens/confirm.dart';
+import 'package:vigour/screens/slot.dart';
+// import 'package:vigour/screens/participate.dart';
+// import 'package:vigour/screens/practice.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -40,7 +42,7 @@ class Vigour extends StatelessWidget {
           ),
         ),
       ),
-      body: Practice(),
+      body: Slot(),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
