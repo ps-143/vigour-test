@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vigour/comp/buttons.dart';
-
+import 'package:vigour/screens/confirm.dart';
 
 class Slot extends StatelessWidget {
   @override
@@ -11,12 +11,13 @@ class Slot extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 30,),
-            Text("Bring your own kit (4 items)",
-              style: TextStyle(
-                fontSize: 20,
-              )
+            SizedBox(
+              height: 30,
             ),
+            Text("Bring your own kit (4 items)",
+                style: TextStyle(
+                  fontSize: 20,
+                )),
             SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,7 +26,9 @@ class Slot extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.add_box),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "Shoes",
                       style: TextStyle(
@@ -39,7 +42,9 @@ class Slot extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.add_box),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "Sipper",
                       style: TextStyle(
@@ -53,7 +58,9 @@ class Slot extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.add_box),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       "Towels",
                       style: TextStyle(
@@ -66,10 +73,11 @@ class Slot extends StatelessWidget {
               ],
             ),
             SizedBox(height: 50),
-            Text("Address",
+            Text(
+              "Address",
               style: TextStyle(
                 fontSize: 20,
-              )
+              ),
             ),
             SizedBox(height: 10),
             Text(
@@ -77,8 +85,8 @@ class Slot extends StatelessWidget {
               softWrap: true,
               style: TextStyle(
                 fontWeight: FontWeight.w300,
-              )
-            )
+              ),
+            ),
           ],
         ),
       ),
@@ -86,6 +94,16 @@ class Slot extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.5,
         buttonText: "Book the Slot",
         margin: const EdgeInsets.only(bottom: 16),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return ConfirmBook();
+              },
+            ),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

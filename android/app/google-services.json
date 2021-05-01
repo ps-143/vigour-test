@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "124733756618",
+    "project_id": "vigour-test",
+    "storage_bucket": "vigour-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124733756618:android:26fb7950d39387377f5033",
+        "android_client_info": {
+          "package_name": "com.example.vigour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124733756618-nbo6n2q9lsn6h230h33p286gqsieeptn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vigour",
+            "certificate_hash": "1d7437a0bc3f3369e72c79037324035305ae2478"
+          }
+        },
+        {
+          "client_id": "124733756618-trrrk6ating9033b6v5l7vrjdot6oq62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGzl73Wu2IwQljoFb5oDs8sHK2AuYwbS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124733756618-trrrk6ating9033b6v5l7vrjdot6oq62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vigour/comp/buttons.dart';
+import 'package:vigour/screens/practice.dart';
 
 class ConfirmBook extends StatelessWidget {
   @override
@@ -97,6 +98,16 @@ class ConfirmBook extends StatelessWidget {
         buttonText: "Done",
         margin: const EdgeInsets.only(bottom: 20),
         width: MediaQuery.of(context).size.width * 0.35,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (ctx) {
+                return Practice();
+              },
+            ),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

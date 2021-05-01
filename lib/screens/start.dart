@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vigour/comp/buttons.dart';
+import 'package:vigour/screens/log_in.dart';
+import 'package:vigour/screens/sign_up.dart';
 
 class Start extends StatelessWidget {
   const Start({
@@ -53,6 +55,10 @@ class Start extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       BorderButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => LogIn()));
+                        },
                         width: MediaQuery.of(context).size.width,
                         buttonText: "Log In",
                         margin: EdgeInsets.symmetric(
@@ -63,6 +69,14 @@ class Start extends StatelessWidget {
                         height: 8,
                       ),
                       PrimaryButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUP(),
+                            ),
+                          );
+                        },
                         width: MediaQuery.of(context).size.width,
                         buttonText: "Sign Up",
                         margin: EdgeInsets.symmetric(

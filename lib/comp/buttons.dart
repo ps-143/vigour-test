@@ -7,7 +7,7 @@ class PrimaryButton extends StatelessWidget {
     this.margin,
     this.buttonText,
     this.onPressed,
-    this.height = 42,
+    this.height = 48,
   }) : super(key: key);
 
   final double width;
@@ -57,6 +57,8 @@ class BorderButton extends StatelessWidget {
     this.buttonText,
     this.onPressed,
     this.height = 48,
+    this.textColor = Colors.red,
+    this.borderColor = Colors.red,
   }) : super(key: key);
 
   final double width;
@@ -64,7 +66,8 @@ class BorderButton extends StatelessWidget {
   final String buttonText;
   final void Function() onPressed;
   final double height;
-
+  final Color textColor;
+  final Color borderColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -74,7 +77,7 @@ class BorderButton extends StatelessWidget {
         child: Text(
           this.buttonText,
           style: TextStyle(
-            color: Colors.red,
+            color: this.textColor,
             fontSize: 16,
           ),
         ),
@@ -90,7 +93,7 @@ class BorderButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           side: BorderSide(
-            color: Colors.red,
+            color: this.borderColor,
           ),
         ),
       ),
