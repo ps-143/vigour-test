@@ -6,11 +6,11 @@ class MyTextFormField extends StatefulWidget {
       {Key key,
       this.hintText,
       this.obscureText = false,
-      @required this.fieldValue})
+      this.textEditingController})
       : super(key: key);
   final String hintText;
   final bool obscureText;
-  String fieldValue;
+  final TextEditingController textEditingController;
 
   @override
   _MyTextFormFieldState createState() => _MyTextFormFieldState();
@@ -23,6 +23,7 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
       height: 40,
       child: TextFormField(
         obscureText: this.widget.obscureText,
+        controller: widget.textEditingController,
         cursorColor: Colors.red,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 10),
@@ -53,12 +54,6 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
           }
           return null;
         },
-        onChanged: (value) {
-          if (this.mounted)
-            setState(() {
-              widget.fieldValue = value;
-            });
-        },
       ),
     );
   }
@@ -66,8 +61,11 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
 
 // ignore: must_be_immutable
 class MyDropdownField extends StatefulWidget {
-  MyDropdownField({Key key, this.list, @required this.fieldValue})
-      : super(key: key);
+  MyDropdownField({
+    Key key,
+    this.list,
+    this.fieldValue,
+  }) : super(key: key);
 
   final List<String> list;
   String fieldValue;

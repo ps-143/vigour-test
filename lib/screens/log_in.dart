@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vigour/comp/buttons.dart';
 import 'package:vigour/comp/input_fields.dart';
+
+import 'home.dart';
 
 class LogIn extends StatefulWidget {
   @override
@@ -52,6 +55,23 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   // final _firstNameFocusNode = FocusNode();
+
+  String _email = "", _password = "";
+
+  _logIn() {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: _email, password: _password)
+        .then((userCred) {
+      if (userCred.user == null) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Invalid email or password')));
+      } else {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (ctx) => Home()));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -59,15 +79,91 @@ class _RegisterState extends State<Register> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MyTextFormField(
-            hintText: "Email Id",
+          SizedBox(
+            height: 40,
+            child: TextFormField(
+              cursorColor: Colors.red,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                filled: true,
+                fillColor: Color.fromRGBO(237, 238, 239, 1),
+                hintText: "Email",
+                hintStyle: TextStyle(
+                  color: Colors.black38,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(
+                    width: 0,
+                    color: Color.fromRGBO(237, 238, 239, 1),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(
+                    width: 0,
+                    color: Color.fromRGBO(237, 238, 239, 1),
+                  ),
+                ),
+              ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return "Please fill email id";
+                }
+                return null;
+              },
+              onChanged: (value) {
+                if (this.mounted)
+                  setState(() {
+                    _email = value;
+                  });
+              },
+            ),
           ),
           SizedBox(
             height: 20,
           ),
-          MyTextFormField(
-            hintText: "Password",
-            obscureText: true,
+          SizedBox(
+            height: 40,
+            child: TextFormField(
+              obscureText: true,
+              cursorColor: Colors.red,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                filled: true,
+                fillColor: Color.fromRGBO(237, 238, 239, 1),
+                hintText: "Password",
+                hintStyle: TextStyle(
+                  color: Colors.black38,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(
+                    width: 0,
+                    color: Color.fromRGBO(237, 238, 239, 1),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(
+                    width: 0,
+                    color: Color.fromRGBO(237, 238, 239, 1),
+                  ),
+                ),
+              ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return "Please fill password";
+                }
+                return null;
+              },
+              onChanged: (value) {
+                if (this.mounted)
+                  setState(() {
+                    _password = value;
+                  });
+              },
+            ),
           ),
           SizedBox(
             height: 40,
@@ -81,8 +177,7 @@ class _RegisterState extends State<Register> {
                 if (_formKey.currentState.validate()) {
                   // If the form is valid, display a snackbar. In the real world,
                   // you'd often call a server or save the information in a database.
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('Loging In')));
+                  _logIn();
                 }
               },
               buttonText: "LogIn",

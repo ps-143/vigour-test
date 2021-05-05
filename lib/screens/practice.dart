@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:vigour/image_res.dart';
 import 'package:vigour/screens/book_slot.dart';
 import 'package:vigour/screens/grounds.dart';
 
 class Practice extends StatelessWidget {
-  const Practice({Key key}) : super(key: key);
-
+  Practice({Key key}) : super(key: key);
+  final List<Map<String, String>> sl = [
+    {"Cricket": cricket},
+    {"Football": football},
+    {"Badminton": badmiton},
+    {"Hockey": hockey},
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,9 +21,10 @@ class Practice extends StatelessWidget {
             height: 300,
             width: MediaQuery.of(context).size.width,
             child: CarouselSlider.builder(
-              itemCount: 10,
+              itemCount: sl.length,
               options: CarouselOptions(
                   viewportFraction: 0.5,
+                  enlargeCenterPage: true,
                   scrollDirection: Axis.horizontal,
                   enableInfiniteScroll: false,
                   onPageChanged: (index, reason) {}),
@@ -32,25 +39,29 @@ class Practice extends StatelessWidget {
                     );
                   },
                   child: Container(
-                      width: 200,
-                      height: 300,
-                      alignment: Alignment.bottomLeft,
-                      margin: EdgeInsets.only(right: 30),
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-                              )),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Text(
-                        'text $index',
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      )),
+                    width: 200,
+                    height: 300,
+                    alignment: Alignment.bottomLeft,
+                    margin: EdgeInsets.only(right: 30),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          sl[index].values.first,
+                        ),
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      '${sl[index].keys.first}',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 );
               },
             )),
@@ -75,7 +86,7 @@ class Practice extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 50),
             child: ListView.builder(
-              itemCount: 20,
+              itemCount: 1,
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
                 return InkWell(

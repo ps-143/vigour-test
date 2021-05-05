@@ -1,11 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vigour/comp/buttons.dart';
+import 'package:vigour/image_res.dart';
 import 'package:vigour/screens/confirm.dart';
 
 class Slot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black87,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        titleSpacing: 0,
+        title: Text(
+          "Cricket",
+          style: TextStyle(
+            fontSize: 34,
+            color: Colors.black87,
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
@@ -14,10 +37,12 @@ class Slot extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Text("Bring your own kit (4 items)",
-                style: TextStyle(
-                  fontSize: 20,
-                )),
+            Text(
+              "Bring your own kit (4 items)",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
             SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,9 +50,9 @@ class Slot extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add_box),
-                    SizedBox(
-                      height: 10,
+                    SvgPicture.asset(
+                      shoes,
+                      height: 100,
                     ),
                     Text(
                       "Shoes",
@@ -41,9 +66,9 @@ class Slot extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add_box),
-                    SizedBox(
-                      height: 10,
+                    SvgPicture.asset(
+                      sipper,
+                      height: 100,
                     ),
                     Text(
                       "Sipper",
@@ -57,9 +82,9 @@ class Slot extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add_box),
-                    SizedBox(
-                      height: 10,
+                    SvgPicture.asset(
+                      towel,
+                      height: 100,
                     ),
                     Text(
                       "Towels",

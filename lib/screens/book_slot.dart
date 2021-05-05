@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vigour/comp/buttons.dart';
+import 'package:vigour/screens/slot.dart';
 
 class BookSlot extends StatefulWidget {
   @override
@@ -13,9 +14,14 @@ class _BookSlotState extends State<BookSlot> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
         ),
         titleSpacing: 0,
         title: ListTile(
@@ -25,7 +31,7 @@ class _BookSlotState extends State<BookSlot> {
             color: Colors.black,
           ),
           title: Text(
-            "BHEL Sports Club",
+            "Aghaa Club, BHEL",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
@@ -36,18 +42,19 @@ class _BookSlotState extends State<BookSlot> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Basketball",
+              "Cricket",
               style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold),
+                color: Colors.red,
+                fontSize: 48,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 4,
+                itemCount: 1,
                 itemBuilder: (ctx, index) {
                   return Container(
                     margin: EdgeInsets.only(bottom: 20),
@@ -74,12 +81,20 @@ class _BookSlotState extends State<BookSlot> {
                               gridDelegate:
                                   SliverGridDelegateWithMaxCrossAxisExtent(
                                       maxCrossAxisExtent: 102,
-                                      childAspectRatio: 1 / 2,
+                                      childAspectRatio: 1,
                                       crossAxisSpacing: 14,
                                       mainAxisSpacing: 14),
-                              itemCount: 10,
+                              itemCount: 7,
                               itemBuilder: (ctx, index) {
                                 return BorderButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (ctx) => Slot(),
+                                      ),
+                                    );
+                                  },
                                   buttonText: "06:00 AM",
                                   textColor: Colors.grey,
                                   borderColor: Colors.grey,

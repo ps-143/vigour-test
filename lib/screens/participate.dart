@@ -39,15 +39,16 @@ class Participate extends StatelessWidget {
                             child: Text(
                               "Cric Wars Box Cricket League",
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  shadows: [
-                                    Shadow(
-                                      color: Colors.black,
-                                      offset: Offset(3, 3),
-                                      blurRadius: 6,
-                                    )
-                                  ]),
+                                color: Colors.white,
+                                fontSize: 24,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black,
+                                    offset: Offset(3, 3),
+                                    blurRadius: 6,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           Row(

@@ -84,7 +84,7 @@ class _RegisterState extends State<Register> {
               .doc(_email)
               .set(userData)
               .then((_) {
-            Navigator.push(
+            Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (ctx) => Home()));
           });
         }

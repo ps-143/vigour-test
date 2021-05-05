@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vigour/image_res.dart';
 import 'package:vigour/screens/book_slot.dart';
 
 class Grounds extends StatefulWidget {
@@ -59,11 +60,13 @@ class _GroundsState extends State<Grounds> {
                     }),
                 title: AnimatedContainer(
                   duration: Duration(milliseconds: 200),
-                  child: Text('Cricket',
-                      style: TextStyle(
-                          color: _isCollapsed ? Colors.red : Colors.white,
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.bold)),
+                  child: Text(
+                    'Cricket',
+                    style: TextStyle(
+                        color: _isCollapsed ? Colors.red : Colors.white,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 expandedHeight: _toolbarExpandedHeight,
                 toolbarHeight: _toolbarCollapsedHeight,
@@ -79,17 +82,18 @@ class _GroundsState extends State<Grounds> {
                       alignment: Alignment.bottomCenter,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-                            )),
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                            cricket,
+                          ),
+                        ),
                       ),
                     )),
               ),
             ];
           },
           body: ListView.builder(
-              itemCount: 10,
+              itemCount: 1,
               itemBuilder: (ctx, index) {
                 return InkWell(
                   onTap: () {
@@ -110,8 +114,8 @@ class _GroundsState extends State<Grounds> {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(16),
-                          child: Image.network(
-                            "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+                          child: Image.asset(
+                            cricket,
                             height: 80,
                           ),
                         ),
@@ -121,7 +125,7 @@ class _GroundsState extends State<Grounds> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Lawn Tennis",
+                                "Cricket",
                                 style: TextStyle(
                                     fontSize: 24,
                                     color: Colors.black,

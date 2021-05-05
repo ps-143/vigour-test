@@ -6,8 +6,33 @@ class ConfirmBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black87,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        titleSpacing: 0,
+        title: Text(
+          "Booking Confirm",
+          style: TextStyle(
+            fontSize: 34,
+            color: Colors.black87,
+          ),
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50.0),
+        padding: const EdgeInsets.only(
+          left: 50.0,
+          right: 50.0,
+          top: 50.0,
+        ),
         child: Column(
           children: [
             SizedBox(
@@ -74,7 +99,7 @@ class ConfirmBook extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 14.0),
                   child: Icon(
-                    Icons.sports_football,
+                    Icons.sports_cricket,
                     size: 40,
                     color: Colors.black54,
                   ),
@@ -82,7 +107,7 @@ class ConfirmBook extends StatelessWidget {
                 Expanded(
                   child: ListTile(
                     title: Text(
-                      "Football",
+                      "Cricket",
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -99,14 +124,10 @@ class ConfirmBook extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 20),
         width: MediaQuery.of(context).size.width * 0.35,
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (ctx) {
-                return Practice();
-              },
-            ),
-          );
+          int count = 0;
+          Navigator.popUntil(context, (route) {
+            return count++ == 2;
+          });
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
